@@ -4,20 +4,32 @@ const http=require("http")
 const cors=require('cors')
 
 const app=express()
-const port=8080
+const port=process.env.PORT || 8080
 
 app.use(cors())
 
 const server=http.createServer(app)
-const io= Server(server,{
+const io=new Server(server,{
     cors:{
         origin:"http://localhost:3000",
         methods:["GET","POST"]
     }
 })
 
+io.on("connection", (socket) => {
+    // console.log(socket.id); 
+
+    socket.on('joinRoom', room=>socket.join(room))
+
+    socket.on('newMessage',({newMessage,room})=>{
+          console.log(newMessage,room)
+          io.in(room).emit("getNewMessage",newMessage)
+    })
+    
+  });
+
 app.get('/',(req,res)=>{
     res.send("welcome")
 })
 
-app.listen(port,()=>console.log(`this is ${port}`))
+server.listen(port,()=>console.log(`this is ${port}`))
