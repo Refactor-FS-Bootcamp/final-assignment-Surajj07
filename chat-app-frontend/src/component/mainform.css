@@ -1,0 +1,42 @@
+.container{
+    height: 400px;
+    width: 400px;
+    margin-top: 100px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    padding: 10px;
+    text-align: center;
+}
+
+.heading{
+    margin-top: 20px;
+}
+.start{
+    color: blue;
+}
+.end{
+    color: palevioletred;
+}
+.nameInput>input{
+  height: 50px;
+  font-size: 20px;
+  width: 90%;
+  margin-top: 50px;
+}
+
+.selectRoom>select{
+    height: 50px;
+    width: 90%;
+    margin-top: 40px;
+    font-size: 18px;
+}
+
+.formSubmit{
+    height: 50px;
+    width: 90%;
+    border-radius: 20px;
+    margin-top: 40px;
+    background-image: linear-gradient(blue, palevioletred);
+    font-size: 25px;
+    color: aliceblue;
+
+}

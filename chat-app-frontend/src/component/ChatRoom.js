@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Moment from 'react-moment'
 import io from 'socket.io-client'
+import './chatRoom.css'
 
 const ChatRoom = () => {
   const location=useLocation();
@@ -51,31 +52,31 @@ const ChatRoom = () => {
   }
 
   return (
-    <div>
+    <div className='roomContainer'>
       <div>
-        <h1>{data?.room} chat Room</h1>
+        <h1>{data?.room} <span className='start'>Chat</span> <span className='end'>Room</span></h1>
       </div>
 
-      <div>
+      <div className='msgContainer'>
         {
             allMessages.map(ele =>{ 
               
                 return data.name===ele.name 
                 ? 
-                <div>
-                    <div>
+                <div className='msgbox'>
+                    <div className='msg'>
                         <div>
-                            <strong>{ele.name}</strong>
+                            <strong>{ele.name} </strong>
                             <small><Moment fromNow>{ele.time}</Moment></small>
                         </div>
                         <h4>{ele.msg}</h4>
                     </div>
                 </div>
                  :
-                 <div>
-                    <div>
+                 <div className='msgbox2'>
+                    <div className='msg2'>
                         <div>
-                            <strong>{ele.msg}</strong>
+                            <strong>{ele.name} </strong>
                             <small><Moment fromNow>{ele.time}</Moment></small>
                         </div>
                         <h4>{ele.msg}</h4>
@@ -86,9 +87,9 @@ const ChatRoom = () => {
         <div ref={msgBoxRef}></div>
        </div>
 
-       <div>
+       <div className='sendMsg'>
         <input type='text' name='message' onChange={handleChange} onKeyDown={handleEnter} value={msg} placeholder='Type your message'/>
-        <button onClick={handleMessage}>send</button>
+        <button onClick={handleMessage}>Send</button>
        </div>
     </div>
   )

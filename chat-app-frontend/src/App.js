@@ -5,7 +5,7 @@ import MainForm from './component/MainForm';
 
 function App() {
   return (
-    <div className="container">
+    <div className="app">
     
      <BrowserRouter>
        <Routes>
